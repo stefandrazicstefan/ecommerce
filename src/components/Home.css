@@ -1,0 +1,14 @@
+.start {
+  background-image: url("../assets/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+}
+.text {
+  display: flex;
+  width: 50%;
+  height: 90%;
+}
+.center {
+  margin: auto;
+}

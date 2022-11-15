@@ -1,0 +1,101 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 50px;
+  background-color: #ddd;
+  border-bottom: 1px solid #bbb;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.logo {
+  color: rgb(161, 60, 255);
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+
+.myName {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.125rem;
+  margin-left: 14px;
+  transition: color 0.3s;
+  font-family: "Poppins", sans-serif;
+}
+
+.myName:hover {
+  color: rgb(161, 60, 255);
+  cursor: pointer;
+}
+
+.tab {
+  display: flex;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.login {
+  border: 1px solid #333;
+  border-radius: 10%;
+  margin-right: 10px;
+  font-size: 1.65rem;
+  text-decoration: none;
+  padding: 4px;
+  color: rgb(161, 60, 255);
+}
+
+.tab1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: #ddd;
+  position: absolute;
+  top: 50px;
+  padding: 16px 10px;
+  display: none;
+}
+
+.t1 {
+  font-size: 18px;
+  margin-top: 12px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #bbb;
+}
+
+.nav {
+  writing-mode: vertical-lr;
+  cursor: pointer;
+  transition: color 0.3s;
+  display: none;
+}
+
+.nav:hover {
+  color: rgb(149, 24, 24);
+}
+
+.active {
+  display: block;
+}
+
+@media screen and (max-width: 870px) {
+  .tab {
+    display: none;
+  }
+  .nav {
+    display: block;
+  }
+}
