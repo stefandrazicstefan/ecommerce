@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./Products.css";
 import LoadingSpinner from "./LoadingSpinner";
+import { NavLink } from "react-router-dom";
 
 function Products() {
   const [data, setData] = useState([]);
@@ -76,7 +77,14 @@ function Products() {
               <div className="card_body">
                 <h5 className="card_title">{item.title}</h5>
                 <p className="card_price">€{item.price}</p>
-                <button className="card_buy">Buy Now</button>
+                <button className="card_buy">
+                  <NavLink
+                    to={`/products/${item.id}`}
+                    className="card_buy_navlink"
+                  >
+                    Buy Now
+                  </NavLink>
+                </button>
               </div>
             </div>
           );
@@ -86,7 +94,7 @@ function Products() {
   };
 
   return (
-    <div className="container">
+    <div className="container_products">
       <div className="row heading">
         <div className="item">Latest products</div>
         <hr />

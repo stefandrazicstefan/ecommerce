@@ -4,8 +4,10 @@ import LoginIcon from "@mui/icons-material/Login";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Navbar({ dropdown1, setDropdown1 }) {
+  const state = useSelector((state) => state.handleCart);
   const [dropdown, setDropdown] = useState("");
   return (
     <>
@@ -72,7 +74,7 @@ function Navbar({ dropdown1, setDropdown1 }) {
             className="login"
           >
             <ShoppingCartIcon />
-            Cart(0)
+            Cart({state.length})
           </NavLink>
         </div>
         <div

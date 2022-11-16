@@ -4,6 +4,8 @@ import React, { useState, useRef, createRef } from "react";
 import Home from "./components/Home";
 import { Route, Routes } from "react-router-dom";
 import Products from "./components/Products";
+import Product from "./components/Product";
+import Cart from "./components/Cart";
 
 function App() {
   const [dropdown, setDropdown] = useState("");
@@ -29,6 +31,16 @@ function App() {
           exact
           path="/products"
           element={<Products />}
+        />
+        <Route
+          exact
+          path="/products/:id"
+          element={<Product />}
+        />
+        <Route
+          exact
+          path="/cart"
+          element={<Cart />}
         />
       </Routes>
     </div>

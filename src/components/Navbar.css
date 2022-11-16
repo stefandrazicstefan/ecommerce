@@ -42,13 +42,12 @@ header {
   display: flex;
 }
 
-.buttons {
+header > .buttons {
   display: flex;
   gap: 0.5rem;
 }
 
 .login {
-  border: 1px solid #333;
   border-radius: 10%;
   margin-right: 10px;
   font-size: 1.65rem;
