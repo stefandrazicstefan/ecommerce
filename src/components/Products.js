@@ -64,11 +64,11 @@ function Products() {
             Electronics
           </button>
         </div>
-        {filter.map((item, index) => {
+        {filter.map((item) => {
           return (
             <div
               className="card"
-              key={index}
+              key={item.id}
             >
               <img
                 src={item.image}
@@ -77,14 +77,12 @@ function Products() {
               <div className="card_body">
                 <h5 className="card_title">{item.title}</h5>
                 <p className="card_price">€{item.price}</p>
-                <button className="card_buy">
-                  <NavLink
-                    to={`/products/${item.id}`}
-                    className="card_buy_navlink"
-                  >
-                    Buy Now
-                  </NavLink>
-                </button>
+                <NavLink
+                  to={`/products/${item.id}`}
+                  className="card_buy_navlink"
+                >
+                  <button className="card_buy">Buy Now</button>
+                </NavLink>
               </div>
             </div>
           );

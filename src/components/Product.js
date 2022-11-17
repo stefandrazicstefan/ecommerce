@@ -6,6 +6,7 @@ import { useParams } from "react-router";
 import LoadingSpinner from "./LoadingSpinner";
 import "./Product.css";
 import StarIcon from "@mui/icons-material/Star";
+import { NavLink } from "react-router-dom";
 
 function Product() {
   const { id } = useParams();
@@ -52,19 +53,25 @@ function Product() {
           <p className="description">{product.description}</p>
           <div className="buttons">
             <button
-              className="add_to_cart"
+              className="add_to_cart cart"
               onClick={() => addProduct(product)}
             >
               Add to Cart
             </button>
-            <button className="go_to_cart">Go to Cart</button>
+            {/* <button className="go_to_cart">
+              <NavLink to="/cart">Go to Cart</NavLink>
+            </button> */}
+
+            <NavLink to="/cart">
+              <button className="go_to_cart cart">Go to Cart</button>
+            </NavLink>
           </div>
         </div>
       </div>
     );
   };
   return (
-    <div className="container">
+    <div className="container_product">
       {isLoading ? <LoadingSpinner /> : <ShowProduct />}
     </div>
   );

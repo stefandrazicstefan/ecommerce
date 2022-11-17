@@ -56,24 +56,12 @@ function Navbar({ dropdown1, setDropdown1 }) {
         </div>
         <div className="buttons tab">
           <NavLink
-            to="/login"
-            className="login"
-          >
-            <LoginIcon />
-            Login
-          </NavLink>
-          <NavLink
-            to="/register"
-            className="login"
-          >
-            <AppRegistrationIcon />
-            Register
-          </NavLink>
-          <NavLink
             to="/cart"
             className="login"
           >
-            <ShoppingCartIcon />
+            <ShoppingCartIcon
+              style={{ marginRight: "1px", marginBottom: "-2px" }}
+            />
             Cart({state.length})
           </NavLink>
         </div>

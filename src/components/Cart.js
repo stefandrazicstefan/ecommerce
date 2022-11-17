@@ -21,49 +21,60 @@ function Cart() {
     state.map((item) => {
       price += item.price * item.qty;
     });
-    if (price !== 0) setTotalPrice(price.toFixed(2));
+    setTotalPrice(price.toFixed(2));
   }, [state]);
 
   return (
     <div className="container">
-      {state.map((item) => {
-        return (
-          <>
+      {state.length < 1 ? (
+        <div
+          style={{
+            margin: "50px auto",
+            fontSize: "2rem",
+          }}
+        >
+          No items in cart.
+        </div>
+      ) : (
+        state.map((item) => {
+          return (
             <div
-              className="row"
               key={item.id}
+              className="parent"
             >
-              <div className="left_div">
-                <img
-                  src={item.image}
-                  alt="No image"
-                />
+              <div className="row">
+                <div className="left_div">
+                  <img
+                    src={item.image}
+                    alt="No image"
+                  />
+                </div>
+                <div className="right_div">
+                  <h1>{item.title}</h1>
+                  <h2>
+                    {item.price}€ * {item.qty} ={" "}
+                    {item.price * item.qty}€
+                  </h2>
+                  <button
+                    className="manageQty"
+                    onClick={() => addProduct(item)}
+                  >
+                    <AddBoxOutlinedIcon className="manageQty_icon" />
+                  </button>
+                  <button
+                    className="manageQty"
+                    onClick={() => delProduct(item)}
+                  >
+                    <IndeterminateCheckBoxOutlinedIcon className="manageQty_icon" />
+                  </button>
+                </div>
               </div>
-              <div className="right_div">
-                <h1>{item.title}</h1>
-                <h2>
-                  {item.price}€ * {item.qty} = {item.price * item.qty}
-                  €
-                </h2>
-                <button
-                  className="manageQty"
-                  onClick={() => addProduct(item)}
-                >
-                  <AddBoxOutlinedIcon className="manageQty_icon" />
-                </button>
-                <button
-                  className="manageQty"
-                  onClick={() => delProduct(item)}
-                >
-                  <IndeterminateCheckBoxOutlinedIcon className="manageQty_icon" />
-                </button>
-              </div>
+              <div className="separator"></div>
             </div>
-            <div className="separator"></div>
-          </>
-        );
-      })}
-      {totalPrice && (
+          );
+        })
+      )}
+      {totalPrice !== parseFloat(0).toFixed(2) && (
         <div className="checkout">
           <p>Subtotal: {totalPrice}€</p>
           <button>Checkout</button>

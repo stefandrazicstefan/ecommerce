@@ -1,3 +1,13 @@
+.container_product {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  background-color: white;
+  margin: 60px auto;
+  border-radius: 10px;
+  max-height: 80vh;
+}
+
 .item1 {
   margin-top: 50px;
   width: 90%;
@@ -6,10 +16,12 @@
 }
 .left_div {
   flex: 0.5;
+  max-height: 75vh;
 }
 .left_div > img {
+  padding: 20px;
   width: 100%;
-  height: 85vh;
+  height: 100%;
 }
 .right_div {
   flex: 0.5;
@@ -41,14 +53,15 @@
 .description {
   font-size: 1.25rem;
 }
-.add_to_cart {
-  border: 1px solid gray;
-  color: #fff;
+.cart {
+  border: 1px solid rgb(0, 0, 0);
+  color: #000;
   font-size: 1rem;
   border-radius: 10%;
   padding: 10px;
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.3s;
   text-decoration: none;
 }
 .right_div > .buttons {
@@ -56,17 +69,6 @@
   display: flex;
   gap: 1.25rem;
 }
-.go_to_cart {
-  border: 1px solid gray;
-  color: #fff;
-  font-size: 1rem;
-  border-radius: 10%;
-  padding: 10px;
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0);
-  text-decoration: none;
-}
-.go_to_cart:hover,
-.add_to_cart:hover {
-  background-color: rgba(0, 0, 0, 0.35);
+.cart:hover {
+  background-color: rgba(0, 0, 0, 0.15);
 }
