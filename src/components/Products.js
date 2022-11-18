@@ -3,11 +3,13 @@ import React, { useEffect, useState } from "react";
 import "./Products.css";
 import LoadingSpinner from "./LoadingSpinner";
 import { NavLink } from "react-router-dom";
+import { Alert } from "@mui/material";
 
 function Products() {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState(data);
   const [isLoading, setIsLoading] = useState(false);
+  const [alert, setAlert] = useState("");
 
   useEffect(() => {
     setIsLoading(true);
@@ -93,6 +95,22 @@ function Products() {
 
   return (
     <div className="container_products">
+      {/* {alert && (
+        <div className="alert">
+          <Alert
+            variant="outlined"
+            severity="success"
+            style={{
+              fontSize: "1rem",
+              backgroundColor: "whitesmoke",
+              color: "black",
+              display: ,
+            }}
+          >
+            Item added to cart !
+          </Alert>
+        </div>
+      )} */}
       <div className="row heading">
         <div className="item">Latest products</div>
         <hr />

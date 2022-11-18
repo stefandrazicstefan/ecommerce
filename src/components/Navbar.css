@@ -89,6 +89,25 @@ header > .buttons {
   display: block;
 }
 
+.cart_number {
+  border-radius: 50%;
+  color: black;
+  background-color: whitesmoke;
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  text-align: center;
+  vertical-align: middle;
+  top: 1px;
+  margin-left: 18px;
+}
+.cart_number > p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: auto;
+  margin-top: -2px;
+}
+
 @media screen and (max-width: 870px) {
   .tab {
     display: none;

@@ -60,9 +60,18 @@ function Navbar({ dropdown1, setDropdown1 }) {
             className="login"
           >
             <ShoppingCartIcon
-              style={{ marginRight: "1px", marginBottom: "-2px" }}
+              style={{
+                marginRight: "1px",
+                marginBottom: "-6px",
+                fontSize: "28px",
+              }}
             />
-            Cart({state.length})
+            {state.length > 0 && (
+              <div className="cart_number">
+                <p>{state.length}</p>
+              </div>
+            )}
+            {/*{state.length})*/}
           </NavLink>
         </div>
         <div

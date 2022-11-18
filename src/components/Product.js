@@ -12,10 +12,13 @@ function Product() {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [qty, setQty] = useState(1);
 
   const dispatch = useDispatch();
   const addProduct = (product) => {
-    dispatch(addCart(product));
+    for (let i = 0; i < qty; i++) {
+      dispatch(addCart(product));
+    }
   };
 
   useEffect(() => {
@@ -52,16 +55,40 @@ function Product() {
           <h1 className="price">€{product.price}</h1>
           <p className="description">{product.description}</p>
           <div className="buttons">
-            <button
-              className="add_to_cart cart"
-              onClick={() => addProduct(product)}
-            >
-              Add to Cart
-            </button>
-            {/* <button className="go_to_cart">
-              <NavLink to="/cart">Go to Cart</NavLink>
-            </button> */}
+            <div className="qty_div">
+              <label
+                htmlFor=""
+                className="qty"
+              >
+                Quantity:{" "}
+              </label>
+              <select
+                name="qty"
+                className="qty_dropdown"
+                onChange={(e) => setQty(e.target.value)}
+                value={qty}
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </div>
 
+            <NavLink to="/">
+              <button
+                className="add_to_cart cart"
+                onClick={() => addProduct(product)}
+              >
+                Add to Cart
+              </button>
+            </NavLink>
             <NavLink to="/cart">
               <button className="go_to_cart cart">Go to Cart</button>
             </NavLink>
