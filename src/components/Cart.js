@@ -6,9 +6,17 @@ import { addCart, delCart } from "../redux/action";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 import IndeterminateCheckBoxOutlinedIcon from "@mui/icons-material/IndeterminateCheckBoxOutlined";
 
+import { useSpring, animated } from "react-spring";
 function Cart() {
   const state = useSelector((state) => state.handleCart);
   const [totalPrice, setTotalPrice] = useState();
+
+  const props = useSpring({
+    to: { opacity: 1 },
+    from: { opacity: 0 },
+    reset: false,
+  });
+
   const dispatch = useDispatch();
   const addProduct = (product) => {
     dispatch(addCart(product));
@@ -38,9 +46,10 @@ function Cart() {
       ) : (
         state.map((item) => {
           return (
-            <div
+            <animated.div
               key={item.id}
               className="parent"
+              style={props}
             >
               <div className="row">
                 <div className="left_div">
@@ -70,7 +79,7 @@ function Cart() {
                 </div>
               </div>
               <div className="separator"></div>
-            </div>
+            </animated.div>
           );
         })
       )}

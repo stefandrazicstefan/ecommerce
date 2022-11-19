@@ -9,6 +9,7 @@
 }
 .center {
   position: absolute;
+  z-index: 5;
   /* width: 50%;
   height: 90%; */
   left: 12%;

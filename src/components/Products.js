@@ -4,12 +4,19 @@ import "./Products.css";
 import LoadingSpinner from "./LoadingSpinner";
 import { NavLink } from "react-router-dom";
 import { Alert } from "@mui/material";
+import { useSpring, animated } from "react-spring";
 
 function Products() {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState(data);
   const [isLoading, setIsLoading] = useState(false);
   const [alert, setAlert] = useState("");
+
+  const props = useSpring({
+    to: { opacity: 1 },
+    from: { opacity: 0 },
+    reset: false,
+  });
 
   useEffect(() => {
     setIsLoading(true);
@@ -68,9 +75,10 @@ function Products() {
         </div>
         {filter.map((item) => {
           return (
-            <div
+            <animated.div
               className="card"
               key={item.id}
+              style={props}
             >
               <img
                 src={item.image}
@@ -86,7 +94,25 @@ function Products() {
                   <button className="card_buy">Buy Now</button>
                 </NavLink>
               </div>
-            </div>
+              <div className="small_size">
+                <h5 className="card_title">{item.title}</h5>
+                <div className="small_size_content">
+                  <img
+                    src={item.image}
+                    alt=""
+                  />
+                  <div className="small_size_card_body">
+                    <p className="card_price">€{item.price}</p>
+                    <NavLink
+                      to={`/products/${item.id}`}
+                      className="card_buy_navlink"
+                    >
+                      <button className="card_buy">Buy Now</button>
+                    </NavLink>
+                  </div>
+                </div>
+              </div>
+            </animated.div>
           );
         })}
       </>

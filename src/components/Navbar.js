@@ -17,7 +17,7 @@ function Navbar({ dropdown1, setDropdown1 }) {
             className="logo"
             to="/"
           >
-            Sunshine Joy
+            Shopping Site
           </NavLink>
         </div>
         <div className="tab">
@@ -71,7 +71,6 @@ function Navbar({ dropdown1, setDropdown1 }) {
                 <p>{state.length}</p>
               </div>
             )}
-            {/*{state.length})*/}
           </NavLink>
         </div>
         <div
@@ -87,11 +86,42 @@ function Navbar({ dropdown1, setDropdown1 }) {
         className="tab1"
         style={{ display: dropdown }}
       >
-        <div className="myName t1">Home</div>
-        <div className="myName t1">About</div>
-        <div className="myName t1">Projects</div>
-        <div className="myName t1">Shop</div>
-        <div className="myName t1">Contact</div>
+        <div className="myName t1">
+          <NavLink
+            style={{ textDecoration: "none", color: "black" }}
+            className=""
+            to="/"
+          >
+            Home
+          </NavLink>
+        </div>
+        <div className="myName t1">
+          <NavLink
+            style={{ textDecoration: "none", color: "black" }}
+            className=""
+            to="/products"
+          >
+            Products
+          </NavLink>
+        </div>
+        <div className="myName t1">
+          <NavLink
+            style={{ textDecoration: "none", color: "black" }}
+            className=""
+            to="/about"
+          >
+            About
+          </NavLink>
+        </div>
+        <div className="myName t1">
+          <NavLink
+            style={{ textDecoration: "none", color: "black" }}
+            className=""
+            to="/contact"
+          >
+            Contact
+          </NavLink>
+        </div>
       </div>
     </>
   );

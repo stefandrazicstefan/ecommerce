@@ -45,7 +45,7 @@ function Product() {
           />
         </div>
         <div className="right_div">
-          <h4>{product.category}</h4>
+          <h4>{product.category}</h4>{" "}
           <h1 className="title">{product.title}</h1>
           <div className="rating">
             {" "}
