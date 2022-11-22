@@ -1,21 +1,24 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Products.css";
 import LoadingSpinner from "./LoadingSpinner";
 import { NavLink } from "react-router-dom";
 import { Alert } from "@mui/material";
 import { useSpring, animated } from "react-spring";
+import { alertContext } from "../App";
 
 function Products() {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState(data);
   const [isLoading, setIsLoading] = useState(false);
-  const [alert, setAlert] = useState("");
 
   const props = useSpring({
-    to: { opacity: 1 },
     from: { opacity: 0 },
-    reset: false,
+    to: { opacity: 1 },
+    reset: true,
+    config: {
+      duration: 300,
+    },
   });
 
   useEffect(() => {
@@ -37,6 +40,8 @@ function Products() {
     const updatedList = data.filter((x) => x.category === str);
     setFilter(updatedList);
   };
+
+  const { setDropdown } = useContext(alertContext);
 
   const ShowProducts = () => {
     return (

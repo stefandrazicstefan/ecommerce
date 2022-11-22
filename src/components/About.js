@@ -9,7 +9,12 @@ function About() {
         textAlign: "center",
       }}
     >
-      Shop your favourite products on our site.
+      Shop your favourite products on our site. <br />
+      <img
+        style={{ marginTop: "10px" }}
+        src="https://skillicons.dev/icons?i=react,redux,mui&theme=dark"
+        alt=""
+      />
     </div>
   );
 }

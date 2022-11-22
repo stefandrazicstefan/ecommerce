@@ -1,14 +1,54 @@
-import React, { useState, useRef, createRef } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./Navbar.css";
-import LoginIcon from "@mui/icons-material/Login";
-import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useRef } from "react";
 
-function Navbar({ dropdown1, setDropdown1 }) {
+function Navbar() {
   const state = useSelector((state) => state.handleCart);
   const [dropdown, setDropdown] = useState("");
+
+  const catMenu = useRef(null);
+
+  const size = useWindowSize();
+  useEffect(() => {
+    if (size.width > "870") setDropdown("");
+  }, [size.width]);
+
+  const closeOpenMenus = (e) => {
+    console.log(`/${dropdown}/`);
+    if (
+      catMenu.current &&
+      dropdown === "flex" &&
+      !catMenu.current.contains(e.target)
+    ) {
+      setDropdown("");
+    }
+  };
+
+  document.addEventListener("mousedown", (e) => closeOpenMenus(e));
+
+  function useWindowSize() {
+    const [windowSize, setWindowSize] = useState({
+      width: undefined,
+      height: undefined,
+    });
+    useEffect(() => {
+      function handleResize() {
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      }
+      window.addEventListener("resize", handleResize);
+      handleResize();
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    return windowSize;
+  }
+
   return (
     <>
       <header>
@@ -54,7 +94,7 @@ function Navbar({ dropdown1, setDropdown1 }) {
             </NavLink>
           </div>
         </div>
-        <div className="buttons tab">
+        <div className="buttons tab cart_tab">
           <NavLink
             to="/cart"
             className="login"
@@ -85,12 +125,14 @@ function Navbar({ dropdown1, setDropdown1 }) {
       <div
         className="tab1"
         style={{ display: dropdown }}
+        ref={catMenu}
       >
         <div className="myName t1">
           <NavLink
             style={{ textDecoration: "none", color: "black" }}
             className=""
             to="/"
+            onClick={() => setDropdown("")}
           >
             Home
           </NavLink>
@@ -100,6 +142,7 @@ function Navbar({ dropdown1, setDropdown1 }) {
             style={{ textDecoration: "none", color: "black" }}
             className=""
             to="/products"
+            onClick={() => setDropdown("")}
           >
             Products
           </NavLink>
@@ -109,6 +152,7 @@ function Navbar({ dropdown1, setDropdown1 }) {
             style={{ textDecoration: "none", color: "black" }}
             className=""
             to="/about"
+            onClick={() => setDropdown("")}
           >
             About
           </NavLink>
@@ -118,6 +162,7 @@ function Navbar({ dropdown1, setDropdown1 }) {
             style={{ textDecoration: "none", color: "black" }}
             className=""
             to="/contact"
+            onClick={() => setDropdown("")}
           >
             Contact
           </NavLink>

@@ -19,9 +19,15 @@ header {
 }
 
 .logo {
-  color: rgb(161, 60, 255);
+  color: black;
+  /* color: rgb(161, 60, 255); */
   font-size: 1.25rem;
   text-decoration: none;
+  transition: all 0.3s;
+}
+
+.cart_tab {
+  margin-right: 7%;
 }
 
 .myName {
@@ -33,7 +39,9 @@ header {
   font-family: "Poppins", sans-serif;
 }
 
-.myName:hover {
+.myName:hover,
+.logo:hover,
+.login:hover {
   color: rgb(161, 60, 255);
   cursor: pointer;
 }
@@ -52,25 +60,25 @@ header > .buttons {
   font-size: 1.45rem;
   text-decoration: none;
   padding: 4px;
-  color: rgb(161, 60, 255);
+  color: black;
+  transition: all 0.3s;
 }
 
 .tab1 {
-  display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   background-color: #ddd;
-  position: absolute;
+  position: relative;
   z-index: 10;
-  top: 50px;
   padding: 16px 10px;
   display: none;
+  margin: 0 auto;
 }
 
 .t1 {
   font-size: 18px;
-  margin-top: 12px;
+  padding: 12px 0;
   padding-bottom: 4px;
   border-bottom: 1px solid #bbb;
 }
@@ -110,14 +118,13 @@ header > .buttons {
 }
 
 @media screen and (max-width: 870px) {
-  .tab {
+  .tab,
+  .tab1,
+  .logo {
     display: none;
   }
   .nav {
     display: block;
-  }
-  .logo {
-    display: none;
   }
 }
 @media screen and (max-width: 500px) {

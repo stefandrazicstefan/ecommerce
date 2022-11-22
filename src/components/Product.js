@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addCart } from "../redux/action";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import LoadingSpinner from "./LoadingSpinner";
 import "./Product.css";
 import StarIcon from "@mui/icons-material/Star";
 import { NavLink } from "react-router-dom";
+import { alertContext } from "../App";
 
 function Product() {
   const { id } = useParams();
@@ -34,6 +35,8 @@ function Product() {
         setIsLoading(false);
       });
   }, []);
+
+  const { handleClick } = useContext(alertContext);
   const ShowProduct = () => {
     return (
       <div className="item1">
@@ -81,10 +84,13 @@ function Product() {
               </select>
             </div>
 
-            <NavLink to="/">
+            <NavLink to="/products">
               <button
                 className="add_to_cart cart"
-                onClick={() => addProduct(product)}
+                onClick={() => {
+                  addProduct(product);
+                  handleClick();
+                }}
               >
                 Add to Cart
               </button>

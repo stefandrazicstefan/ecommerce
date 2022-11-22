@@ -4,6 +4,7 @@
   width: 90%;
   background-color: white;
   margin: 60px auto;
+  border-radius: 10px;
 }
 .container > .parent > .row {
   border-radius: 3%;
@@ -19,7 +20,7 @@
   margin: auto;
   width: 250px;
   height: 300px;
-  object-fit: fill;
+  object-fit: contain;
 }
 .container > .parent > .row > .right_div {
   padding: 5px;
@@ -61,7 +62,7 @@
   margin: auto;
 }
 .checkout > button {
-  font-size: 0.85rem;
+  font-size: 0.93rem;
   width: 100px;
   margin: auto;
   border-radius: 10%;

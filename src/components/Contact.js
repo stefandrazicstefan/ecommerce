@@ -17,12 +17,12 @@ function Contact() {
       >
         https://github.com/stefandrazicstefan/
       </a>
-      <p style={{ marginTop: "10px" }}>
+      <div style={{ marginTop: "10px" }}>
         email:{" "}
         <p style={{ color: "rgb(161, 50, 255)" }}>
           stefandrazicstefan@gmail.com
         </p>
-      </p>
+      </div>
     </div>
   );
 }
