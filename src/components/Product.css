@@ -96,6 +96,7 @@
   padding: 2px;
 }
 .qty_div {
+  background-color: #fff;
   display: flex;
   flex-direction: column;
 }
