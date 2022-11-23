@@ -15,6 +15,7 @@ function Contact() {
         <a
           href="https://github.com/stefandrazicstefan/"
           target="_blank"
+          style={{ color: "rgb(161, 50, 255)" }}
         >
           https://github.com/stefandrazicstefan
         </a>
