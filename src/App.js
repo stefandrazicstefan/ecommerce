@@ -1,11 +1,6 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
-import React, {
-  useState,
-  useRef,
-  createRef,
-  createContext,
-} from "react";
+import React, { useState, createContext } from "react";
 import Home from "./components/Home";
 import { Route, Routes } from "react-router-dom";
 import Products from "./components/Products";
@@ -43,7 +38,7 @@ function App() {
         }}
       >
         <Snackbar
-          style={{ marginTop: "20px" }}
+          className="snackbar"
           anchorOrigin={{ vertical, horizontal }}
           open={open}
           autoHideDuration={2000}
@@ -59,7 +54,7 @@ function App() {
               color: "black",
             }}
           >
-            Checkout succesfully completed!
+            Item successfully added to cart!
           </Alert>
         </Snackbar>
         <Navbar></Navbar>

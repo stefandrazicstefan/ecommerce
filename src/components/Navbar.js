@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { NavLink } from "react-router-dom";
@@ -9,25 +9,21 @@ function Navbar() {
   const state = useSelector((state) => state.handleCart);
   const [dropdown, setDropdown] = useState("");
 
-  const catMenu = useRef(null);
+  const ref = useRef();
 
   const size = useWindowSize();
   useEffect(() => {
     if (size.width > "870") setDropdown("");
   }, [size.width]);
 
-  const closeOpenMenus = (e) => {
-    console.log(`/${dropdown}/`);
-    if (
-      catMenu.current &&
-      dropdown === "flex" &&
-      !catMenu.current.contains(e.target)
-    ) {
-      setDropdown("");
-    }
-  };
-
-  document.addEventListener("mousedown", (e) => closeOpenMenus(e));
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!ref?.current?.contains(event.target)) {
+        setDropdown("");
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+  }, [ref]);
 
   function useWindowSize() {
     const [windowSize, setWindowSize] = useState({
@@ -50,7 +46,7 @@ function Navbar() {
   }
 
   return (
-    <>
+    <section ref={ref}>
       <header>
         <div className="logo">
           <NavLink
@@ -94,16 +90,25 @@ function Navbar() {
             </NavLink>
           </div>
         </div>
-        <div className="buttons tab cart_tab">
+        <div
+          className="nav"
+          onClick={(e) => {
+            dropdown === "" ? setDropdown("flex") : setDropdown("");
+          }}
+        >
+          |||
+        </div>
+        <div className="buttons cart_tab">
           <NavLink
             to="/cart"
             className="login"
+            onClick={() => setDropdown("")}
           >
             <ShoppingCartIcon
               style={{
                 marginRight: "1px",
                 marginBottom: "-6px",
-                fontSize: "28px",
+                fontSize: "30px",
               }}
             />
             {state.length > 0 && (
@@ -113,19 +118,10 @@ function Navbar() {
             )}
           </NavLink>
         </div>
-        <div
-          className="nav"
-          onClick={(e) => {
-            dropdown === "" ? setDropdown("flex") : setDropdown("");
-          }}
-        >
-          |||
-        </div>
       </header>
       <div
         className="tab1"
         style={{ display: dropdown }}
-        ref={catMenu}
       >
         <div className="myName t1">
           <NavLink
@@ -168,7 +164,7 @@ function Navbar() {
           </NavLink>
         </div>
       </div>
-    </>
+    </section>
   );
 }
 

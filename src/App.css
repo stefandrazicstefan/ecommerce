@@ -21,3 +21,11 @@ input[type="number"] {
   padding-top: 1px;
   padding-bottom: 1px;
 }
+.snackbar {
+  margin-top: 26px;
+}
+@media only screen and (max-width: 600px) {
+  .snackbar {
+    margin-top: 38px;
+  }
+}

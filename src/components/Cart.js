@@ -6,8 +6,6 @@ import { Alert } from "@mui/material";
 import { addCart, delCart } from "../redux/action";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 import Snackbar from "@mui/material/Snackbar";
-import IconButton from "@mui/material/IconButton";
-import CloseIcon from "@mui/icons-material/Close";
 import IndeterminateCheckBoxOutlinedIcon from "@mui/icons-material/IndeterminateCheckBoxOutlined";
 
 import { useSpring, animated } from "react-spring";
@@ -60,7 +58,7 @@ function Cart() {
   return (
     <div className="container">
       <Snackbar
-        style={{ marginTop: "20px" }}
+        className="snackbar"
         anchorOrigin={{ vertical, horizontal }}
         open={open}
         autoHideDuration={2000}
